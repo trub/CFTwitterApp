@@ -17,6 +17,7 @@
 		1C2FE6F81BDEC22400A2E2AB /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2FE6F71BDEC22400A2E2AB /* Tweet.swift */; };
 		1C2FE6FA1BDEC2EB00A2E2AB /* TweetJSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2FE6F91BDEC2EB00A2E2AB /* TweetJSONParser.swift */; };
 		E17EB0371BE00AFB0013C2E0 /* tweet.json in Resources */ = {isa = PBXBuildFile; fileRef = E17EB0361BE00AFB0013C2E0 /* tweet.json */; };
+		E1E348F11BE127F800FC4E5D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E348F01BE127F800FC4E5D /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		1C2FE6F71BDEC22400A2E2AB /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		1C2FE6F91BDEC2EB00A2E2AB /* TweetJSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetJSONParser.swift; sourceTree = "<group>"; };
 		E17EB0361BE00AFB0013C2E0 /* tweet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tweet.json; sourceTree = "<group>"; };
+		E1E348F01BE127F800FC4E5D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				1C2FE6CE1BDEBF1900A2E2AB /* Assets.xcassets */,
 				1C2FE6D01BDEBF1900A2E2AB /* LaunchScreen.storyboard */,
 				1C2FE6D31BDEBF1900A2E2AB /* Info.plist */,
+				E1E348F01BE127F800FC4E5D /* User.swift */,
 			);
 			path = TwitterCF;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				1C2FE6FA1BDEC2EB00A2E2AB /* TweetJSONParser.swift in Sources */,
 				1C2FE6F81BDEC22400A2E2AB /* Tweet.swift in Sources */,
 				1C2FE6CA1BDEBF1900A2E2AB /* HomeViewController.swift in Sources */,
+				E1E348F11BE127F800FC4E5D /* User.swift in Sources */,
 				1C2FE6C81BDEBF1900A2E2AB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
