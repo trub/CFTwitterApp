@@ -17,16 +17,24 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
+        //setup table view
+        self.setupTableView()
+        //authenticate user
         self.getAccount()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    func setupTableView() {
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        self.tableView.estimatedRowHeight = 100.0
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
     
     // MARK: Week 2 Class + Homework.
     
@@ -85,6 +93,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath)
         let tweet = tweets[indexPath.row]
         
+        cell.textLabel?.numberOfLines = 0
         cell.textLabel?.text = tweet.text
         
         if let user = tweet.user {
@@ -92,10 +101,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             cell.detailTextLabel?.text = "Posted by: Sponsor."
         }
-        
-        tableView.estimatedRowHeight = 100
-        tableView.rowHeight = UITableViewAutomaticDimension
-        
+//        
+//        tableView.estimatedRowHeight = 100
+//        tableView.rowHeight = UITableViewAutomaticDimension
+//        
         return cell
     }
     
