@@ -20,6 +20,8 @@
 		E1E348F11BE127F800FC4E5D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E348F01BE127F800FC4E5D /* User.swift */; };
 		E1E348F61BE14DF300FC4E5D /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E348F51BE14DF300FC4E5D /* LoginService.swift */; };
 		E1E348F81BE1517F00FC4E5D /* TwitterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E348F71BE1517F00FC4E5D /* TwitterService.swift */; };
+		E1E348FF1BE2900600FC4E5D /* TweetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E348FE1BE2900600FC4E5D /* TweetDetailViewController.swift */; };
+		E1E349081BE2CF3600FC4E5D /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E349071BE2CF3600FC4E5D /* ImageFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		E1E348F01BE127F800FC4E5D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E1E348F51BE14DF300FC4E5D /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		E1E348F71BE1517F00FC4E5D /* TwitterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterService.swift; sourceTree = "<group>"; };
+		E1E348FE1BE2900600FC4E5D /* TweetDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetDetailViewController.swift; sourceTree = "<group>"; };
+		E1E349071BE2CF3600FC4E5D /* ImageFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				1C2FE6C71BDEBF1900A2E2AB /* AppDelegate.swift */,
+				E1E349071BE2CF3600FC4E5D /* ImageFetcher.swift */,
 				E1E348F31BE14D0A00FC4E5D /* Controller */,
 				E1E348F21BE14D0000FC4E5D /* Model */,
 				E1E348F41BE14D1400FC4E5D /* Supporting Files */,
@@ -150,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				1C2FE6C91BDEBF1900A2E2AB /* HomeViewController.swift */,
+				E1E348FE1BE2900600FC4E5D /* TweetDetailViewController.swift */,
 				E1E348F71BE1517F00FC4E5D /* TwitterService.swift */,
 				E1E348F51BE14DF300FC4E5D /* LoginService.swift */,
 			);
@@ -311,8 +317,10 @@
 				1C2FE6FA1BDEC2EB00A2E2AB /* TweetJSONParser.swift in Sources */,
 				E1E348F81BE1517F00FC4E5D /* TwitterService.swift in Sources */,
 				E1E348F61BE14DF300FC4E5D /* LoginService.swift in Sources */,
+				E1E349081BE2CF3600FC4E5D /* ImageFetcher.swift in Sources */,
 				1C2FE6F81BDEC22400A2E2AB /* Tweet.swift in Sources */,
 				1C2FE6CA1BDEBF1900A2E2AB /* HomeViewController.swift in Sources */,
+				E1E348FF1BE2900600FC4E5D /* TweetDetailViewController.swift in Sources */,
 				E1E348F11BE127F800FC4E5D /* User.swift in Sources */,
 				1C2FE6C81BDEBF1900A2E2AB /* AppDelegate.swift in Sources */,
 			);

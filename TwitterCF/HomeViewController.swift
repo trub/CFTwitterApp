@@ -146,7 +146,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    //custom cell layout
-    
+//    
+//    func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
+//        self.performSegueWithIdentifier(TweetDetailViewController.identifier(), sender: any)
+//    }
     
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 
+//creates user to reinforce single responsibility
 class User {
     //
     var username: String
