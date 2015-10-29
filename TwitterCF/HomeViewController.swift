@@ -6,6 +6,7 @@
 //  Copyright © 2015 Michael Babiy. All rights reserved.
 //
 
+
 import UIKit
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -14,69 +15,88 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var tweets = [Tweet]()
     
-    class func identifier() -> String {
-        return "HomeViewController"
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupTableView()
-        self.getTweets()
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        self.getAccount()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func setupTableView() {
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+    // MARK: Week 2 Class + Homework.
+    
+    func getAccount() {
+        LoginService.loginTwitter({ (error, account) -> () in
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            if let account = account {
+                TwitterService.sharedService.account = account
+                self.authenticateUser()
+            }
+        })
+    }
+    
+    func authenticateUser(){
+        TwitterService.getAuthUser { (error, user) -> () in
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            if let user = user {
+                TwitterService.sharedService.user = user
+                self.getTweets()
+            }
+        }
     }
     
     func getTweets() {
-        
-        if let tweetJSONFileUrl = NSBundle.mainBundle().URLForResource("tweet", withExtension: "json") {
+        TwitterService.tweetsFromHomeTimeline { (error, tweets) -> () in
+            if let error = error {
+                print(error)
+                return
+            }
             
-            print(tweetJSONFileUrl)
-            
-            if let tweetJSONData = NSData(contentsOfURL: tweetJSONFileUrl) {
-                
-                print(tweetJSONData)
-                
-                
-                if let tweets = TweetJSONParser.tweetFromJSONData(tweetJSONData) {
-                    
-                    print(tweets)
-                    
+            if let tweets = tweets {
+                NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                     self.tweets = tweets
                     self.tableView.reloadData()
-                }
-                
+                })
             }
         }
-        
     }
-
+    
     // MARK: UITableView
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.tweets.count
+        return tweets.count
     }
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath)
-        
-        let tweet = self.tweets[indexPath.row]
+        let tweet = tweets[indexPath.row]
         
         cell.textLabel?.text = tweet.text
-        cell.detailTextLabel?.text = "Tweet id is: \(tweet.user?.username)"
+        
+        if let user = tweet.user {
+            cell.detailTextLabel?.text = "Posted by: \(user.username)"
+        } else {
+            cell.detailTextLabel?.text = "Posted by: Sponsor."
+        }
+        
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         return cell
     }
     
-    
-    
 }
-
-
-

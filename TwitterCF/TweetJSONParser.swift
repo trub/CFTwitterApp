@@ -27,10 +27,12 @@ class TweetJSONParser {
                     if let text = tweetObject["text"] as? String, id = tweetObject["id_str"] as? String, user = tweetObject["user"] as? [String : AnyObject] {
                         
                         
-                        let user = userFromData(user)
+                        let tweet = Tweet(text: text, id: id)
                         
-                        let tweet = Tweet(text: text, id: id, user: user)
-
+                        
+                        if let name = user["name"] as? String, profileImageURL = user["profile_image_url"] as? String {
+                            tweet.user = User(username: name, profileImageURL: profileImageURL)
+                        }
 
                         //append object to tweets array
                         tweets.append(tweet)

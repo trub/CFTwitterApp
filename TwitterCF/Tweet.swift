@@ -14,7 +14,7 @@ class Tweet {
     let id: String
     var user: User?
     
-    init(text: String, id: String, user: User?) {
+    init(text: String, id: String, user: User? = nil) {
         self.text = text
         self.id = id
         self.user = user
