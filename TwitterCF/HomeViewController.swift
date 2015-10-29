@@ -21,6 +21,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.setupTableView()
         //authenticate user
         self.getAccount()
+        
+        //make fake tweets
+//        for i in 0..<30
+//        {
+//            tweets.append(Tweet(text: "test", id: "test"))
+//        }
+    
     }
     
     override func didReceiveMemoryWarning() {
@@ -28,11 +35,36 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func setupTableView() {
+        //for the table view for this controller i am it's delegate
         self.tableView.delegate = self
+        //for the table view for this controller i am it's datacourse
         self.tableView.dataSource = self
         
+        //set up size of table view cell
         self.tableView.estimatedRowHeight = 100.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        // ...pull to refresh
+        let spinner = UIRefreshControl(frame: CGRectMake(0.0, 0.0, 44.0, 44.0))
+        spinner.addTarget(self, action: "updateFeed:", forControlEvents: UIControlEvents.AllEvents)
+        self.tableView.addSubview(spinner)
+        
+    }
+    
+    //MARK: oct28 --> adds pull to refresh
+    
+    func updateFeed(sender: AnyObject) {
+        
+        //simulate network call
+        NSOperationQueue().addOperationWithBlock { () -> Void in
+            usleep(1000000)
+            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                if let spinner = sender as? UIRefreshControl {
+                    spinner.endRefreshing()
+                }
+            })
+        }
+        
     }
     
     
@@ -95,6 +127,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.text = tweet.text
+        //create a rainbow
+        let colorChange = abs(CGFloat(indexPath.row % 20) / CGFloat(20) - 0.5)
+        //change cell color
+        cell.backgroundColor = UIColor(hue: 0.51, saturation: 0.2 + 0.8*colorChange, brightness: 0.77, alpha: 1)
+        
         
         if let user = tweet.user {
             cell.detailTextLabel?.text = "Posted by: \(user.username)"
@@ -107,5 +144,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        
         return cell
     }
+    
+    
+    //custom cell layout
+    
     
 }

@@ -22,7 +22,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setupAppearance() {
         UITabBar.appearance().tintColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 1.0)
-//        UITabBar.appearance().backgroundColor = UIColor(red: 255.0, green: 99.0, blue: 71.0, alpha: 1)
+
+//        //get reference to the window
+//        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+//        //create viewController
+//        let rootViewController = HomeViewController()
+//        let navController = UINavigationController(rootViewController: rootViewController)
+//        self.window!.rootViewController = navController
+//        self.window?.makeKeyAndVisible()
+    
     }
 }
 
