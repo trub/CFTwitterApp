@@ -51,6 +51,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == TweetDetailViewController.identifier() {
+            //return tweet user clicks
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                //take the cell # and index the tweets array
+                let tweet = self.tweets[indexPath.row]
+                
+                let tweetsDetailViewController = segue.destinationViewController as! TweetDetailViewController
+                tweetsDetailViewController.tweet = tweet
+            }
+        }
+    }
+    
+    
+    
     //MARK: oct28 --> adds pull to refresh
     
     func updateFeed(sender: AnyObject) {

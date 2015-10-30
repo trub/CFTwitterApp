@@ -15,13 +15,13 @@ class TweetDetailViewController: UIViewController {
     var tweet: Tweet!
     
     class func identifier() -> String{
-        return "TweetDetailViewController"
+        return "detailVCsegue"
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // self.setupAppearance()
+         self.setupAppearance()
         // self.setupTweetDetailViewController()
         
     }
@@ -42,6 +42,9 @@ class TweetDetailViewController: UIViewController {
         if let user = self.tweet.user {
             self.navigationItem.title = user.username
         }
+        
+        self.tweetLabel.text = self.tweet.text
+        
     }
     
     func setupTweetDetailViewController() {
