@@ -44,6 +44,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.estimatedRowHeight = 100.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
+        let customTweetCellXib = UINib(nibName: "CustomCell", bundle: NSBundle.mainBundle())
+        self.tableView.registerNib(customTweetCellXib, forCellReuseIdentifier: CustomCellTableViewCell.identifier())
+        
         // ...pull to refresh
         let spinner = UIRefreshControl(frame: CGRectMake(0.0, 0.0, 44.0, 44.0))
         spinner.addTarget(self, action: "updateFeed:", forControlEvents: UIControlEvents.AllEvents)
@@ -130,40 +133,26 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // MARK: UITableView
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tweets.count
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath)
-        let tweet = tweets[indexPath.row]
-        
-        cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.text = tweet.text
-        //create a rainbow
-        let colorChange = abs(CGFloat(indexPath.row % 20) / CGFloat(20) - 0.5)
-        //change cell color
-        cell.backgroundColor = UIColor(hue: 0.51, saturation: 0.2 + 0.8*colorChange, brightness: 0.77, alpha: 1)
-        
-        
-        if let user = tweet.user {
-            cell.detailTextLabel?.text = "Posted by: \(user.username)"
-        } else {
-            cell.detailTextLabel?.text = "Posted by: Sponsor."
-        }
-//        
-//        tableView.estimatedRowHeight = 100
-//        tableView.rowHeight = UITableViewAutomaticDimension
-//        
+        let cell = tableView.dequeueReusableCellWithIdentifier(CustomCellTableViewCell.identifier(), forIndexPath: indexPath) as! CustomCellTableViewCell
+        cell.tweet = tweets[indexPath.row]
         return cell
     }
+
     
+    func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier(TweetDetailViewController.identifier(), sender: nil)
+    }
     
-//    
-//    func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
-//        self.performSegueWithIdentifier(TweetDetailViewController.identifier(), sender: any)
-//    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier(TweetDetailViewController.identifier(), sender: nil)
+    }
     
 }
+
+

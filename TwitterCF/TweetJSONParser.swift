@@ -27,6 +27,7 @@ class TweetJSONParser {
                         
                         //pass tweetObject into the function
                         let isRetweet = self.isRetweet(tweetObject)
+                        
                         //if isRetweet (which is a tuple boolean value) is true; it's a retweet
                         if isRetweet.0 == true {
                             if let retweetObject = isRetweet.1 {
@@ -42,9 +43,10 @@ class TweetJSONParser {
                         else {
                             
                             let tweet = Tweet(text: text, id: id)
-                            if let name = user["name"] as? String, profileImageURL = user["profile_image_url"] as? String {
-                                tweet.user = User(username: name, profileImageURL: profileImageURL)
-                            }
+                            tweet.user = userFromData(user)
+//                            if let name = user["name"] as? String, profileImageURL = user["profile_image_url_https"] as? String {
+//                                tweet.user = User(username: name, profileImageURL: profileImageURL)
+//                            }
                             
                             //append object to tweets array
                             tweets.append(tweet)
@@ -97,7 +99,7 @@ class TweetJSONParser {
     
     class func userFromData(user : [String : AnyObject]) -> User? {
         if let name = user["name"] as? String,
-            profileImageURL = user["profile_image_url"] as? String {
+            profileImageURL = user["profile_image_url_https"] as? String {
                 return User(username: name,  profileImageURL: profileImageURL)
         }
         
